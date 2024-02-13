@@ -3,12 +3,17 @@ import Item from "./item";
 import data from "./items.json";
 
 function SortItems () {
-  const [name, sortBy] = useState("name");
-  const [sorted, setSortBy] = useState(null);
+  const [sortBy, setSortBy] = useState("name");
+
+  function handleClick(name) {
+    if (sortBy === name) {
+      // Arrange code
+    }
+  }
 
   function handleClick(category) {
     if (sortBy === category) {
-      //
+      // Arrange code
     }
   }
 
