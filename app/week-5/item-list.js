@@ -5,14 +5,14 @@ import data from "./items.json";
 function SortItems () {
   const [sortBy, setSortBy] = useState("name");
 
-  function handleClick(name) {
-    if (sortBy === name) {
+  function handleClick(Name) {
+    if (sortBy === Name) {
       // Arrange code
     }
   }
 
-  function handleClick(category) {
-    if (sortBy === category) {
+  function handleClick(Category) {
+    if (sortBy === Category) {
       // Arrange code
     }
   }
