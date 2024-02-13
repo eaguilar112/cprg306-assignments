@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from './item';
 
-const ItemList = () => {
+function ItemList() {
   const items = [
     { name: "milk, 4 L 🥛", quantity: 1, category: "dairy" },
     { name: "bread 🍞", quantity: 2, category: "bakery" },

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Item = ({ name, quantity, category }) => {
+function Item({ name, quantity, category }) {
   return (
     <li className="border border-gray-300 p-4 mb-4 rounded-md shadow-md">
       <h2 className="text-xl font-semibold mb-2">{name}</h2>
