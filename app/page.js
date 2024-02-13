@@ -12,7 +12,7 @@ const CourseInfo = () => {
         <Link href="/week-3">Week 3 Assignment</Link>
       </p>
       <p>
-        <Link href="/week-4">Week 3 Assignment</Link>
+        <Link href="/week-4">Week 4 Assignment</Link>
       </p>
     </div>
   );
