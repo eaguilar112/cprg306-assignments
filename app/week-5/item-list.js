@@ -1,19 +1,21 @@
 import React from "react";
-import data from "./items.json"
+import Item from "./item";
+import data from "./items.json";
 
-function ItemList() {
-return (
-    <ul>
-      {data.map((item, index) => (
-        <data
-          key={index}
-          name={item.name}
-          quantity={item.quantity}
-          category={item.category}
-        />
-      ))}
-    </ul>
-  );
+function ItemList () {
+    return (
+        <ul>
+          {data.map((item, index) => (
+            <Item
+              key={index}
+              name={item.name}
+              quantity={item.quantity}
+              category={item.category}
+            />
+          ))}
+        </ul>
+      );
 };
+
 
 export default ItemList;
