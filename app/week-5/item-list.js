@@ -1,42 +1,32 @@
-import Item from './item.js';
-import items from './items.json';
+import React, { useState} from "react";
+import Item from "./item";
+import data from "./items.json";
 
-const ItemList = () => {
-  const [sortBy, setSortBy] = useState('name');
+function SortItems () {
+  const [sortBy, setSortBy] = useState("name");
 
-  const sortedItems = [...items].sort((a, b) => {
-    if (sortBy === 'name') {
-      return a.name.localeCompare(b.name);
-    } else if (sortBy === 'category') {
-      return a.category.localeCompare(b.category);
-    }
-    return 0;
-  });
+  const items = ['name', 'category']
 
-  const handleSortChange = (value) => {
-    setSortBy(value);
+  function handleClick(item) {
+    if (sortBy === item) {
+      // Arrange code
+    };
   };
 
-  return (
-    <div>
-      <button
-        onClick={() => handleSortChange('name')}
-        style={{ backgroundColor: sortBy === 'name' ? 'lightblue' : 'white' }}
-      >
-        Sort by Name
-      </button>
-      <button
-        onClick={() => handleSortChange('category')}
-        style={{ backgroundColor: sortBy === 'category' ? 'lightblue' : 'white' }}
-      >
-        Sort by Category
-      </button>
-
-      {sortedItems.map((item) => (
-        <Item key={item.id} item={item} />
-      ))}
-    </div>
-  );
+    return (
+        <div className="category buttons">
+          <button
+            type="onClick"
+            className="bg-blue-400 hover:bg-blue-500 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Name
+          </button>
+          <button
+            type="onClick"
+            className="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Category
+          </button>
+        </div>
+      );
 };
 
 export default ItemList;
