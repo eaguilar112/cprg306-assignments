@@ -1,36 +1,43 @@
-import React, { useState} from "react";
-import Item from "./item";
-import data from "./items.json";
+import React, { useState } from 'react';
+import Item from '.item';
+import items from './items.json';
 
-function SortItems () {
-  const [sortBy, setSortBy] = useState("name");
+const ItemList = () => {
+  const [sortBy, setSortBy] = useState('name');
 
-  function handleClick(Name) {
-    if (sortBy === Name) {
-      // Arrange code
+  const sortedItems = [...items].sort((a, b) => {
+    if (sortBy === 'name') {
+      return a.name.localeCompare(b.name);
+    } else if (sortBy === 'category') {
+      return a.category.localeCompare(b.category);
     }
-  }
+    return 0;
+  });
 
-  function handleClick(Category) {
-    if (sortBy === Category) {
-      // Arrange code
-    }
-  }
+  const handleSortChange = (value) => {
+    setSortBy(value);
+  };
 
-    return (
-        <div className="category buttons">
-          <button
-            type="onClick"
-            className="bg-blue-400 hover:bg-blue-500 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            Name
-          </button>
-          <button
-            type="onClick"
-            className="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            Category
-          </button>
-        </div>
-      );
+  return (
+    <div>
+      <button
+        onClick={() => handleSortChange('name')}
+        style={{ backgroundColor: sortBy === 'name' ? 'lightblue' : 'white' }}
+      >
+        Sort by Name
+      </button>
+      <button
+        onClick={() => handleSortChange('category')}
+        style={{ backgroundColor: sortBy === 'category' ? 'lightblue' : 'white' }}
+      >
+        Sort by Category
+      </button>
+
+      {sortedItems.map((item) => (
+        <Item key={item.id} item={item} />
+      ))}
+    </div>
+  );
 };
 
 export default ItemList;
