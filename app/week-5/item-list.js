@@ -8,7 +8,6 @@ import items from './items.json';
 const ItemList = () => {
   const [sortBy, setSortBy] = useState('name');
 
-  // Sort the items array based on the sortBy state variable
   const sortedItems = [...items].sort((a, b) => {
     if (sortBy === 'name') {
       return a.name.localeCompare(b.name);
@@ -18,28 +17,26 @@ const ItemList = () => {
     return 0;
   });
 
-  // Function to handle sorting preference change
   const handleSortChange = (value) => {
     setSortBy(value);
   };
 
   return (
     <div>
-      {/* Sort buttons */}
+      Sort By:
       <button
         onClick={() => handleSortChange('name')}
-        style={{ backgroundColor: sortBy === 'name' ? 'lightblue' : 'white' }}
+        style={{ backgroundColor: sortBy === 'name' ? 'blue' : 'white', borderRadius: '5px', margin: '10px', padding: '10px', color: sortBy === 'name' ? 'black' : 'green' }}
       >
-        Sort by Name
+        Name
       </button>
       <button
         onClick={() => handleSortChange('category')}
-        style={{ backgroundColor: sortBy === 'category' ? 'lightblue' : 'white' }}
+        style={{ backgroundColor: sortBy === 'category' ? 'blue' : 'white', borderRadius: '5px', margin: '10px', padding: '10px', color: sortBy === 'category' ? 'black' : 'green' }}
       >
-        Sort by Category
+        Category
       </button>
 
-      {/* Render the items */}
       {sortedItems.map((item) => (
         <Item key={item.id} name={item.name} quantity={item.quantity} category={item.category} />
       ))}
