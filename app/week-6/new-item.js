@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-function NewItem() {
+function NewItem({onAddItem}) {
   const [name, setName] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState('produce');
@@ -11,14 +11,13 @@ function NewItem() {
     e.preventDefault();
 
     const item = {
+      id: generateId(),
       name: name,
       quantity: quantity,
       category: category
     };
 
-    console.log(item);
-
-    alert(`Item: ${name}\nQuantity: ${quantity}\nCategory: ${category}`);
+    onAddItem(item)
 
     setName('');
     setQuantity(1);
