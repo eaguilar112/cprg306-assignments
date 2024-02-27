@@ -24,6 +24,10 @@ function NewItem({onAddItem}) {
     setCategory('produce');
   };
 
+  const generateId = () => {
+    return '_' + Math.random().toString(36).substring(2,9);
+  };
+
   return (
     <div className="container mx-auto mt-8">
       <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">

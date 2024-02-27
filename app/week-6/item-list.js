@@ -1,47 +1,36 @@
-"use client"
+import React from 'react';
+import Item from './item';
 
-import React, { useState } from 'react';
-import Item from './item.js';
+function ItemList({ items }) {
+    const handleDeleteItem = (idToDelete) => {
+        const updatedItems = items.filter(item => item.id !== idToDelete);
+        // Call a function to handle the updated items (e.g., setItems(updatedItems))
+        // or dispatch an action to update state if using Redux
+    };
 
-import items from './items.json';
+    const handleEditItem = (idToEdit, updatedItemData) => {
+        const updatedItems = items.map(item => {
+            if (item.id === idToEdit) {
+                return { ...item, ...updatedItemData };
+            }
+            return item;
+        });
+        // Call a function to handle the updated items (e.g., setItems(updatedItems))
+        // or dispatch an action to update state if using Redux
+    };
 
-const ItemList = () => {
-  const [sortBy, setSortBy] = useState('name');
-
-  const sortedItems = [...items].sort((a, b) => {
-    if (sortBy === 'name') {
-      return a.name.localeCompare(b.name);
-    } else if (sortBy === 'category') {
-      return a.category.localeCompare(b.category);
-    }
-    return 0;
-  });
-
-  const handleSortChange = (value) => {
-    setSortBy(value);
-  };
-
-  return (
-    <div>
-      Sort By:
-      <button
-        onClick={() => handleSortChange('name')}
-        style={{ backgroundColor: sortBy === 'name' ? 'blue' : 'white', borderRadius: '5px', margin: '10px', padding: '10px', color: sortBy === 'name' ? 'black' : 'green' }}
-      >
-        Name
-      </button>
-      <button
-        onClick={() => handleSortChange('category')}
-        style={{ backgroundColor: sortBy === 'category' ? 'blue' : 'white', borderRadius: '5px', margin: '10px', padding: '10px', color: sortBy === 'category' ? 'black' : 'green' }}
-      >
-        Category
-      </button>
-
-      {sortedItems.map((item) => (
-        <Item key={item.id} name={item.name} quantity={item.quantity} category={item.category} />
-      ))}
-    </div>
-  );
-};
+    return (
+        <div>
+            {items.map(item => (
+                <Item
+                    key={item.id}
+                    item={item}
+                    onDeleteItem={handleDeleteItem}
+                    onEditItem={handleEditItem}
+                />
+            ))}
+        </div>
+    );
+}
 
 export default ItemList;
