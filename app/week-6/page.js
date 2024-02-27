@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import ItemList from './item-list';
 import NewItem from './new-item';
 import itemsData from './items.json';
