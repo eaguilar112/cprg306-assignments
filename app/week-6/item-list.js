@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
+import Item from './item';
 
 const ItemList = ({items}) => {
   const [sortBy, setSortBy] = useState('name');
@@ -35,7 +36,7 @@ const ItemList = ({items}) => {
       </button>
 
       {sortedItems.map((item) => (
-        <items key={item.id} name={item.name} quantity={item.quantity} category={item.category} />
+        <Item key={item.id} name={item.name} quantity={item.quantity} category={item.category} />
       ))}
     </div>
   );
