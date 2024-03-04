@@ -35,7 +35,7 @@ const ItemList = ({items}) => {
       </button>
 
       {sortedItems.map((item) => (
-        <Item key={item.id} name={item.name} quantity={item.quantity} category={item.category} />
+        <items key={item.id} name={item.name} quantity={item.quantity} category={item.category} />
       ))}
     </div>
   );
