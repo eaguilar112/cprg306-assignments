@@ -22,7 +22,7 @@ export default function ItemList({ items, onItemSelect }) {
             <button className={`bg-${sortBy === "category" ?  "orange-500" : "orange-700"} p-1 m-2 w-28 text-white`} onClick={() => setSortBy("category")}>Category</button>
         </div>
         {itemsCopy.map((item) => (
-            <Item id={item.id} name={item.name} quantity={item.quantity} category={item.category} onSelect={onItemSelect}/>
+            <Item key={item.id} name={item.name} quantity={item.quantity} category={item.category} onSelect={onItemSelect} />
         ))}
         </main>
     );}
