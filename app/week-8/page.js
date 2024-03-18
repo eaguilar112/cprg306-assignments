@@ -2,17 +2,28 @@
 import { useUserAuth } from "./_utils/auth-context";
  
 // Use the useUserAuth hook to get the user object and the login and logout functions
-function Author() {
+function UserInfo() {
     const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+
+    useEffect(() => {
+        const signInAndOut = async () => {
+            try {
+                await gitHubSignIn();
+            } catch (error) {
+                console.error("Error signing in:", error);
+            }
+
+            await firebaseSignOut();
+        };
+
+        signInAndOut();
+    });
+    
+    return (
+        <div>
+            <p>
+                Welcome, {user.displayName} ({user.email})
+            </p>;
+        </div>
+    );
 }
- 
-// Sign in to Firebase with GitHub authentication
-await gitHubSignIn();
- 
-// Sign out of Firebase
-await firebaseSignOut();
- 
-// Display some of the user's information
-<p>
-  Welcome, {user.displayName} ({user.email})
-</p>;
