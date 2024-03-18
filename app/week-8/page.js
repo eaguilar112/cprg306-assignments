@@ -2,7 +2,9 @@
 import { useUserAuth } from "./_utils/auth-context";
  
 // Use the useUserAuth hook to get the user object and the login and logout functions
-const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+function Author() {
+    const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+}
  
 // Sign in to Firebase with GitHub authentication
 await gitHubSignIn();
